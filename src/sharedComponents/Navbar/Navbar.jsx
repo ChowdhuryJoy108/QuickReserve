@@ -1,11 +1,15 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user,signOutUser } = useContext(AuthContext);
+  const navigate = useNavigate()
   const links = (
     <div className="flex flex-col font-semibold gap-4 lg:flex-row">
       <li>
-        <NavLink to={'/'}>Home</NavLink>
+        <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
         <NavLink to={"/rooms"}>Rooms</NavLink>
@@ -15,6 +19,26 @@ const Navbar = () => {
       </li>
     </div>
   );
+
+
+  const handleSignOut =()=>{
+    signOutUser()
+      .then(() => {
+        Swal.fire({
+                    icon: "success",
+                    title: "Success..",
+                    text: 'User Logged out Successully. welcome!',
+                  })
+        navigate('/')
+      })
+      .catch((error) => {
+        Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: `Log Out Failed : ${error.message}`,
+              })
+      });
+  }
   return (
     <div className="navbar bg-base-100 mx-2">
       <div className="navbar-start">
@@ -48,8 +72,18 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end text-xs md:text-sm space-x-1 lg:text-base lg:space-x-4">
-        <Link to={'/login'} className="btn">Login</Link>
-        <Link to={'/register'} className="btn">Register</Link>
+        {user && user.email ? (
+          <Link onClick={handleSignOut} className="btn">Log Out</Link>
+        ) : (
+          <>
+            <Link to={"/login"} className="btn">
+              Login
+            </Link>
+            <Link to={"/register"} className="btn">
+              Register
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
