@@ -4,7 +4,12 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import Swal from "sweetalert2";
 import RoomReviewForm from "../../components/RoomReviewForm";
-import {  Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
+import { Typewriter } from 'react-simple-typewriter'
+import Lottie from 'lottie-react'
+import BookingThanksAnimation from '../../assets/lottie/lottieHotels/thanks.json'
+import { Link } from "react-router-dom";
+import {  FaArrowCircleRight } from "react-icons/fa";
 
 const MyBookings = () => {
   const { user, userId } = useContext(AuthContext);
@@ -16,14 +21,11 @@ const MyBookings = () => {
 
   const [selectedRoom, setSelectedRoom] = useState(null);
 
-
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/bookings/${userId}`)
+      .get(`https://quick-reserve-server.vercel.app/bookings/${userId}`)
       .then((res) => setBookings(res.data));
   }, [userId]);
-
-
 
   const handleUpdateDate = async () => {
     if (!newDate) {
@@ -36,7 +38,7 @@ const MyBookings = () => {
     }
 
     try {
-      await axios.put(`http://localhost:8000/update-booking-date`, {
+      await axios.put(`https://quick-reserve-server.vercel.app/update-booking-date`, {
         _id: selectedBooking._id,
         roomId: selectedBooking.roomId,
         bookingDate: newDate, //.toISOString().split("T")[0]
@@ -69,7 +71,7 @@ const MyBookings = () => {
   const handleCancelBooking = async (bookingId, roomId) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/cancel-booking",
+        "https://quick-reserve-server.vercel.app/cancel-booking",
         {
           bookingId,
           roomId,
@@ -97,8 +99,6 @@ const MyBookings = () => {
     }
   };
 
-
-
   const handleReview = (roomId, userName) => {
     setSelectedRoom({
       roomId,
@@ -114,13 +114,45 @@ const MyBookings = () => {
   return (
     <div>
       <Helmet>
-          <title>My Bookings - QuickReserve</title>
-          <meta
-            name="description"
-            content="Welcome to the My Bookings Page."
-          />
-        </Helmet>
-      <table className="table-auto w-full border-collapse border border-gray-300 text-left my-10">
+        <title>My Bookings - QuickReserve</title>
+        <meta name="description" content="Welcome to the My Bookings Page." />
+      </Helmet>
+      <div className="flex flex-col items-center my-0">
+        <div className=" w-48 h-34 lg:w-96 ml-8">
+          <Lottie animationData={BookingThanksAnimation} />
+        </div>
+      </div>
+      <div className="flex flex-col items-center  mb-8">
+      <h1
+          style={{ paddingTop: "2rem", margin: "auto 0", fontWeight: "normal" }}
+          className="text-2xl px-4 text-center text-[#111111] lg:text-4xl"
+        >
+          {" "}
+          Welcome to your Bookings - {" "} <br />{" "}
+          <span style={{ color: "green", fontWeight: "bold" }}>
+            <Typewriter
+              words={[
+                "Manage",
+                 "View",
+                  "Track"
+              ]}
+              loop={5}
+              cursor
+              cursorStyle="_"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
+          </span> 
+          Your Reservations Easily in One Place
+        </h1>
+
+        <p className="text-base mt-4 px-2 w-full  text-gray-600 text-center lg:w-[800px]">
+          Access all your bookings effortlessly. View reservation details, make
+          changes, and manage your stays with convenience and confidence
+        </p>
+      </div>
+      <table className="table-auto w-full border-collapse border border-gray-300 text-left my-6">
         <thead>
           <tr className="bg-gray-100">
             <th className="border border-gray-300 px-4 py-2">Image</th>
@@ -182,6 +214,10 @@ const MyBookings = () => {
             : "No Booking"}
         </tbody>
       </table>
+      <div className="flex justify-start mb-8">
+        <Link className="btn btn-primary" to="/">Explore more <FaArrowCircleRight className="text-xl" /> </Link>
+       
+      </div>
       {showModal && (
         <div className="modal modal-open">
           <div className="modal-box">

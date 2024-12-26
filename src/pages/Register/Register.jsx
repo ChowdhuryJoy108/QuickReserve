@@ -113,7 +113,7 @@ const Register = () => {
                 name="profile"
                 placeholder="profile"
                 className="input input-bordered"
-                required
+                
               />
             </div>
             <div className="form-control">

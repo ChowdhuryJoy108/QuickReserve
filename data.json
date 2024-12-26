@@ -1,0 +1,183 @@
+ [
+      {
+        "name": "Deluxe King Room",
+        "description": "A luxurious room featuring a king-sized bed, modern decor, and stunning city views.",
+        "photos": [
+          "https://i.ibb.co.com/SVQy2hw/16256-116439-f64873263-4k.webp",
+          "https://i.ibb.co.com/2y59Ngf/16256-116439-f72537843-4k.webp"
+        ],
+        "facilities": [
+          "Free Wi-Fi",
+          "Air Conditioning",
+          "Flat-screen TV",
+          "Minibar",
+          "Room Service"
+        ],
+        "price": 150,
+        "currency": "USD",
+        "availability": true
+      },
+      {
+        "name": "Executive Suite",
+        "description": "An elegant suite with a spacious living area, a private balcony, and premium amenities.",
+        "photos": [
+          "https://i.ibb.co.com/8jGGNx7/16256-116439-f64873281-4k.webp",
+          "https://i.ibb.co.com/tHVhdDP/16256-116439-f64873287-4k.jpg",
+          "https://i.ibb.co.com/2F1gK4Q/16256-116439-f64873289-4k.jpg"
+        ],
+        "facilities": [
+          "Private Balcony",
+          "Free Wi-Fi",
+          "Jacuzzi",
+          "King-sized Bed",
+          "Complimentary Breakfast"
+        ],
+        "price": 250,
+        "currency": "USD",
+        "availability": true
+      },
+      {
+        "name": "Standard Twin Room",
+        "description": "A cozy room with two twin beds, perfect for friends or colleagues traveling together.",
+        "photos": [
+          "https://i.ibb.co.com/7bdPHzP/luxury-bedroom-suite-resort-high-rise-hotel-with-working-table.jpg",
+          "https://i.ibb.co.com/9tr5Sf0/modern-luxury-bedroom-suite-bathroom.jpg"
+        ],
+        "facilities": [
+          "Free Wi-Fi",
+          "Air Conditioning",
+          "Flat-screen TV",
+          "Tea/Coffee Maker"
+        ],
+        "price": 100,
+        "currency": "USD",
+        "availability": true
+      },
+      {
+        "name": "Family Room",
+        "description": "A spacious room with two queen-sized beds, ideal for families.",
+        "photos": [
+          "https://i.ibb.co.com/tHc4Zhy/cozy-studio-apartment-with-bedroom-living-space.jpg",
+          "https://i.ibb.co.com/ZJ3GVd5/hotel-room-interior-with-bedroom-area-living-space-kitchen.jpg"
+        ],
+        "facilities": [
+          "Free Wi-Fi",
+          "Air Conditioning",
+          "Flat-screen TV",
+          "Mini-fridge",
+          "Complimentary Breakfast"
+        ],
+        "price": 180,
+        "currency": "USD",
+        "availability": true
+      },
+      {
+        "name": "Single Economy Room",
+        "description": "A budget-friendly room perfect for solo travelers.",
+        "photos": [
+          "https://i.ibb.co.com/Xjcbn93/luxury-bedroom-hotel.jpg",
+          "https://i.ibb.co.com/qkWK0FN/white-bedroom-hotel.jpg"
+        ],
+        "facilities": [
+          "Free Wi-Fi",
+          "Air Conditioning",
+          "Flat-screen TV",
+          "Desk"
+        ],
+        "price": 80,
+        "currency": "USD",
+        "availability": true
+      },
+      {
+        "name": "Luxury Penthouse",
+        "description": "An exclusive penthouse with panoramic views, a private pool, and premium services.",
+        "photos": [
+          "https://i.ibb.co.com/4jHPkgF/3d-rendering-beautiful-comtemporary-luxury-bedroom-suite-hotel-with-tv.jpg",
+          "https://i.ibb.co.com/4RFymr2/3d-rendering-beautiful-luxury-dark-wood-european-classic-bedroom-suite-hotel.jpg"
+        ],
+        "facilities": [
+          "Private Pool",
+          "Panoramic Views",
+          "Free Wi-Fi",
+          "24/7 Butler Service",
+          "Complimentary Breakfast"
+        ],
+        "price": 500,
+        "currency": "USD",
+        "availability": true
+      },
+      {
+        "name": "Junior Suite",
+        "description": "A comfortable suite with a separate living area and luxurious amenities.",
+        "photos": [
+          "https://i.ibb.co.com/VYpW27r/16256-116439-f64873263-4k.webp",
+          "https://i.ibb.co.com/VYpW27r/16256-116439-f64873263-4k.webp"
+        ],
+        "facilities": [
+          "Living Area",
+          "Free Wi-Fi",
+          "Air Conditioning",
+          "Minibar",
+          "Complimentary Breakfast"
+        ],
+        "price": 200,
+        "currency": "USD",
+        "availability": true
+      },
+      {
+        "name": "Superior Double Room",
+        "description": "A stylish room with a double bed, modern decor, and great amenities.",
+        "photos": [
+          "https://i.ibb.co.com/kyKXQSq/16256-116439-f65569830-4k.jpg",
+          "https://i.ibb.co.com/26LwK8W/16256-116439-f68009339-4k.webp"
+        ],
+        "facilities": [
+          "Free Wi-Fi",
+          "Air Conditioning",
+          "Flat-screen TV",
+          "Tea/Coffee Maker",
+          "Room Service"
+        ],
+        "price": 120,
+        "currency": "USD",
+        "availability": true
+      },
+      {
+        "name": "Honeymoon Suite",
+        "description": "A romantic suite designed for couples, featuring a private hot tub and stunning views.",
+        "photos": [
+          "https://i.ibb.co.com/ByRfRrC/pillow-bed.jpg",
+          "https://i.ibb.co.com/CB0dYbG/white-pillow-bed.jpg"
+        ],
+        "facilities": [
+          "Private Hot Tub",
+          "Romantic Decor",
+          "Free Wi-Fi",
+          "Complimentary Champagne",
+          "King-sized Bed"
+        ],
+        "price": 300,
+        "currency": "USD",
+        "availability": true
+      },
+      {
+        "name": "Presidential Suite",
+        "description": "An ultra-luxurious suite with top-notch facilities and personalized services.",
+        "photos": [
+          "https://i.ibb.co.com/LZKdWCz/3d-rendering-beautiful-luxury-bedroom-suite-hotel-with-tv-working-table.jpg",
+          "https://i.ibb.co.com/pLRnjjc/16256-116439-f64873283-4k.jpg"
+        ],
+        "facilities": [
+          "Private Pool",
+          "Jacuzzi",
+          "24/7 Butler Service",
+          "Home Theater",
+          "Complimentary Breakfast"
+        ],
+        "price": 800,
+        "currency": "USD",
+        "availability": true
+      }
+  ]
+  
+  

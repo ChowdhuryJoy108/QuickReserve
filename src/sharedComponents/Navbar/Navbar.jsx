@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import Swal from "sweetalert2";
+import Logo from '../../assets/logo.png'
 
 const Navbar = () => {
   const { user,signOutUser } = useContext(AuthContext);
@@ -14,9 +15,11 @@ const Navbar = () => {
       <li>
         <NavLink to={"/rooms"}>Rooms</NavLink>
       </li>
-      <li>
-        <NavLink to={"/bookings"}>My Bookings</NavLink>
-      </li>
+      {
+        user && (<li>
+          <NavLink to={"/bookings"}>My Bookings</NavLink>
+        </li>)
+      }
     </div>
   );
 
@@ -66,7 +69,9 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">OR</a>
+        <Link className="">
+          <img src={Logo} alt="" className="w-16 rounded-full" />
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>

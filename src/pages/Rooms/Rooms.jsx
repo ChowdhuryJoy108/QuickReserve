@@ -13,7 +13,7 @@ const Rooms = () => {
   const [sortRoomOrder, setSortRoomOrder] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:8000/rooms").then((res) => setRooms(res.data));
+    axios.get("https://quick-reserve-server.vercel.app/rooms").then((res) => setRooms(res.data));
   }, []);
 
   const handleSortRoomByPriceRange = (order) => {
@@ -22,7 +22,7 @@ const Rooms = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/rooms/sort?sortRoomOrder=${sortRoomOrder}`)
+      .get(`https://quick-reserve-server.vercel.app/rooms/sort?sortRoomOrder=${sortRoomOrder}`)
       .then((res) => setRooms(res.data));
   }, [sortRoomOrder]);
 

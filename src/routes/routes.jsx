@@ -6,11 +6,14 @@ import MyBookings from "../pages/MyBookings/MyBookings";
 import Register from "../pages/Register/Register"
 import Login from "../pages/LogIn/Login";
 import RoomDetails from "../components/RoomDetails";
+import PrivateRoutes from "./PrivateRoutes";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -35,7 +38,9 @@ const router = createBrowserRouter([
       },
       {
         path:"bookings",
-        element:<MyBookings />
+        element:<PrivateRoutes>
+          <MyBookings />
+        </PrivateRoutes>
       }
     ],
   },

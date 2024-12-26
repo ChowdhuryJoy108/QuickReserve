@@ -25,7 +25,7 @@ const Login = () => {
         email : email
       }
 
-      axios.post('http://localhost:8000/jwt', user, {withCredentials : true})
+      axios.post('https://quick-reserve-server.vercel.app/jwt', user, {withCredentials : true})
       .then(res => console.log(res.data))
 
       Swal.fire({

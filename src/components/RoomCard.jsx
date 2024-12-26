@@ -1,15 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const RoomCard = ({ room }) => {
-  const { _id, name, price, facilities, description, currency, availability } =
+  const { _id, photos, name, price, facilities, description, currency, availability } =
     room;
+    const location = useLocation()
+    console.log(location.pathname)
   return (
     <Link to={`/room/details/${_id}`}>
       <div className="card  bg-base-100 w-full h-[450px] shadow-xl lg:w-96">
         <figure>
           <img
-            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-            alt="Shoes"
+            src={photos[0]}
+            alt="Room photos"
             className="w-full h-[150px] object-cover"
           />
         </figure>
@@ -34,13 +36,16 @@ const RoomCard = ({ room }) => {
               </div>
             ))}
           </div>
-          {/* <div className="w-full">
+          {
+            location.pathname === '/rooms' ? " " : <div className="w-full">
             <Link to={`/room/details/${_id}`}>
               <button className="btn w-full text-black bg-green-400 hover:bg-green-700 hover:text-white ">
                 Book Now
               </button>
             </Link>
-          </div> */}
+          </div> 
+          }
+          
         </div>
       </div>
     </Link>

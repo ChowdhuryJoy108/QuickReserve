@@ -23,7 +23,7 @@ const RoomReviewForm = ({ roomId, userName, closeReviewForm }) => {
     };
 
     try {
-      await axios.post("http://localhost:8000/reviews", review);
+      await axios.post("https://quick-reserve-server.vercel.app/reviews", review);
       console.log("Review submitted successfully!");
     } catch (error) {
       console.error("Error submitting review:", error);
