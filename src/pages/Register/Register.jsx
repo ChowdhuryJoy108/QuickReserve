@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
 
@@ -75,6 +76,13 @@ const Register = () => {
   
   return (
     <div className="hero max-w-[800px] mx-auto min-h-screen ">
+      <Helmet>
+          <title>Resgistration - OuickReserve</title>
+          <meta
+            name="description"
+            content="Welcome to the Registration Page."
+          />
+        </Helmet>
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           

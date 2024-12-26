@@ -6,6 +6,7 @@ import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
     const navigate = useNavigate()
@@ -45,6 +46,13 @@ const Login = () => {
   }
   return (
     <div className="hero max-w-[800px] mx-auto min-h-screen ">
+       <Helmet>
+          <title>Login - QuickReserve</title>
+          <meta
+            name="description"
+            content="Welcome to the Login Page."
+          />
+        </Helmet>
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           

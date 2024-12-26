@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import RoomBookingForm from "./RoomBookingForm";
 import ReviewTestimonials from "./ReviewTestimonials";
+import { Helmet } from "react-helmet";
 
 const RoomDetails = () => {
   const { id } = useParams();
@@ -41,6 +42,13 @@ const RoomDetails = () => {
   } = roomDetails;
   return (
     <div className="w-full lg:max-w-5xl mx-auto">
+      <Helmet>
+          <title>Room Details - QuickReserve</title>
+          <meta
+            name="description"
+            content="Welcome to the Room Details Page."
+          />
+        </Helmet>
       <div className="mt-8">
         <h3 className="flex items-center text-xl text-center font-bold mb-8">
           Explore More About <span>{name}</span>.

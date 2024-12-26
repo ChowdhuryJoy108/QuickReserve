@@ -4,6 +4,7 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import Swal from "sweetalert2";
 import RoomReviewForm from "../../components/RoomReviewForm";
+import { Helmet } from "react-helmet";
 
 const MyBookings = () => {
   const { user, userId } = useContext(AuthContext);
@@ -97,15 +98,7 @@ const MyBookings = () => {
     }
   };
 
-  //   const submitReview = async (review) => {
-  //     try {
-  //       await axios.post("http://localhost:8000/reviews", review);
-  //       toast.success("Review submitted successfully!");
-  //     } catch (error) {
-  //       console.error("Error submitting review:", error);
-  //       toast.error("Failed to submit review.");
-  //     }
-  //   };
+
 
   const handleReview = (roomId, userName) => {
     setSelectedRoom({
@@ -121,6 +114,13 @@ const MyBookings = () => {
   };
   return (
     <div>
+      <Helmet>
+          <title>My Bookings - QuickReserve</title>
+          <meta
+            name="description"
+            content="Welcome to the Login Page."
+          />
+        </Helmet>
       <table className="table-auto w-full border-collapse border border-gray-300 text-left my-10">
         <thead>
           <tr className="bg-gray-100">
