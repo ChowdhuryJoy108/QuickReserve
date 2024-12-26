@@ -10,7 +10,7 @@ import {  Helmet } from "react-helmet-async";
 
 const Login = () => {
     const navigate = useNavigate()
-    const {signInUser} = useContext(AuthContext)
+    const {signInUser,signInWithGoogle} = useContext(AuthContext)
     const handleLogin = e =>{
         e.preventDefault();
         const form = e.target;
@@ -44,6 +44,27 @@ const Login = () => {
       })
     });
   }
+
+  const handleGoogleLogin = () => {
+    signInWithGoogle()
+    .then((result) => {
+      
+
+      Swal.fire({
+        icon: "Success",
+        title: "yAy..",
+        text: 'User Logged In Successully with Gmail Account!',
+      })
+      navigate("/");
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Sign In Failed : ${error.message}`,
+      })
+    });
+  };
   return (
     <div className="hero max-w-[800px] mx-auto min-h-screen ">
        <Helmet>
@@ -61,6 +82,7 @@ const Login = () => {
           </div>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl ">
+          <h1 className="text-center text-2xl mt-4 font-bold">Login Now</h1>
           <form onSubmit={handleLogin} className="card-body">
             
             <div className="form-control">
@@ -94,7 +116,7 @@ const Login = () => {
             </div>
             <div className="form-control mt-6 space-y-4">
               <button className="btn bg-blue-400 font-bold hover:bg-blue-700 hover:text-white">Login</button>
-              <button className="btn flex bg-blue-400 font-bold hover:bg-blue-700 hover:text-white">
+              <button onClick={handleGoogleLogin} className="btn flex bg-blue-400 font-bold hover:bg-blue-700 hover:text-white">
                 <FaGoogle />
                 Login with Google</button>
               <p>

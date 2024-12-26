@@ -1,20 +1,28 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Carousel } from "@material-tailwind/react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import RoomBookingForm from "./RoomBookingForm";
 import ReviewTestimonials from "./ReviewTestimonials";
 import { Helmet } from "react-helmet-async";
 import Lottie from 'lottie-react'
 import BookAnimation from '../assets/lottie/lottieHotels/booking.json'
+import AuthContext from "../context/AuthContext";
 
 const RoomDetails = () => {
   const { id } = useParams();
+  const {user} = useContext(AuthContext)
+  const navigate = useNavigate()
   const [roomDetails, setRoomDetails] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [roomReviews, setRoomReviews] = useState([]);
 
-  const openModal = () => setIsModalOpen(true);
+  const openModal = () => {
+    if(!user){
+      navigate('/login')
+    }
+    setIsModalOpen(true)
+  };
 
   useEffect(() => {
     axios
@@ -126,7 +134,7 @@ const RoomDetails = () => {
         </div>
       </div>
 
-      {isModalOpen && (
+      {user && isModalOpen && (
         <div className="fixed z-20 inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="modal modal-open">
             <div className="modal-box">

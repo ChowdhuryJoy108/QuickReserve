@@ -5,11 +5,11 @@ import DatePicker from "react-datepicker";
 import Swal from "sweetalert2";
 import RoomReviewForm from "../../components/RoomReviewForm";
 import { Helmet } from "react-helmet-async";
-import { Typewriter } from 'react-simple-typewriter'
-import Lottie from 'lottie-react'
-import BookingThanksAnimation from '../../assets/lottie/lottieHotels/thanks.json'
+import { Typewriter } from "react-simple-typewriter";
+import Lottie from "lottie-react";
+import BookingThanksAnimation from "../../assets/lottie/lottieHotels/thanks.json";
 import { Link } from "react-router-dom";
-import {  FaArrowCircleRight } from "react-icons/fa";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 const MyBookings = () => {
   const { user, userId } = useContext(AuthContext);
@@ -23,9 +23,13 @@ const MyBookings = () => {
 
   useEffect(() => {
     axios
-      .get(`https://quick-reserve-server.vercel.app/bookings/${userId}`)
+      .get(`https://quick-reserve-server.vercel.app/bookings/${userId}`, {
+        withCredentials: true,
+      })
       .then((res) => setBookings(res.data));
   }, [userId]);
+
+  console.log(bookings)
 
   const handleUpdateDate = async () => {
     if (!newDate) {
@@ -38,12 +42,16 @@ const MyBookings = () => {
     }
 
     try {
-      await axios.put(`https://quick-reserve-server.vercel.app/update-booking-date`, {
-        _id: selectedBooking._id,
-        roomId: selectedBooking.roomId,
-        bookingDate: newDate, //.toISOString().split("T")[0]
-        userId,
-      });
+      await axios.put(
+        `https://quick-reserve-server.vercel.app/update-booking-date`,
+        {
+          _id: selectedBooking._id,
+          roomId: selectedBooking.roomId,
+          roomName: selectedBooking.roomName,
+          bookingDate: newDate, //.toISOString().split("T")[0]
+          userId,
+        }
+      );
       Swal.fire({
         icon: "success",
         title: "Success..",
@@ -78,7 +86,6 @@ const MyBookings = () => {
         }
       );
 
-      console.log(response.data.message);
       Swal.fire({
         icon: "success",
         title: "Success..",
@@ -123,19 +130,15 @@ const MyBookings = () => {
         </div>
       </div>
       <div className="flex flex-col items-center  mb-8">
-      <h1
+        <h1
           style={{ paddingTop: "2rem", margin: "auto 0", fontWeight: "normal" }}
           className="text-2xl px-4 text-center text-[#111111] lg:text-4xl"
         >
           {" "}
-          Welcome to your Bookings - {" "} <br />{" "}
+          Welcome to your Bookings - <br />{" "}
           <span style={{ color: "green", fontWeight: "bold" }}>
             <Typewriter
-              words={[
-                "Manage",
-                 "View",
-                  "Track"
-              ]}
+              words={["Manage", "View", "Track"]}
               loop={5}
               cursor
               cursorStyle="_"
@@ -143,7 +146,7 @@ const MyBookings = () => {
               deleteSpeed={50}
               delaySpeed={1000}
             />
-          </span> 
+          </span>
           Your Reservations Easily in One Place
         </h1>
 
@@ -152,7 +155,7 @@ const MyBookings = () => {
           changes, and manage your stays with convenience and confidence
         </p>
       </div>
-      <table className="table-auto w-full border-collapse border border-gray-300 text-left my-6">
+      {/* <table className="table-auto w-full border-collapse border border-gray-300 text-left my-6">
         <thead>
           <tr className="bg-gray-100">
             <th className="border border-gray-300 px-4 py-2">Image</th>
@@ -213,10 +216,78 @@ const MyBookings = () => {
               ))
             : "No Booking"}
         </tbody>
-      </table>
+      </table> */}
+      <div className="overflow-x-auto">
+        <table className="table-auto w-full border-collapse border border-gray-300 text-left my-6">
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="border border-gray-300 px-4 py-2">Room</th>
+              <th className="border border-gray-300 px-4 py-2">Name</th>
+              <th className="border border-gray-300 px-4 py-2">Price</th>
+              <th className="border border-gray-300 px-4 py-2">Booking Date</th>
+              <th className="border border-gray-300 px-4 py-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {bookings.length > 0 ? (
+              bookings.map((booking) => (
+                <tr key={booking._id}>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {booking.roomName || booking.roomId}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {booking.userName}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    USD {booking.price}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {booking.bookingDate}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    <button
+                      className="btn btn-primary btn-sm mr-2"
+                      onClick={() => {
+                        setSelectedBooking(booking);
+                        setShowModal(true);
+                      }}
+                    >
+                      Update Date
+                    </button>
+                    <button
+                      className="btn btn-error btn-sm mr-2"
+                      onClick={() =>
+                        handleCancelBooking(booking._id, booking.roomId)
+                      }
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      className="btn btn-success btn-sm"
+                      onClick={() =>
+                        handleReview(booking.roomId, booking.userName)
+                      }
+                    >
+                      Give Review
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="5" className="text-center py-4">
+                  No Booking
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+
       <div className="flex justify-start mb-8">
-        <Link className="btn btn-primary" to="/">Explore more <FaArrowCircleRight className="text-xl" /> </Link>
-       
+        <Link className="btn btn-primary" to="/">
+          Explore more <FaArrowCircleRight className="text-xl" />{" "}
+        </Link>
       </div>
       {showModal && (
         <div className="modal modal-open">

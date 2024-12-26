@@ -9,7 +9,7 @@ import {  Helmet } from "react-helmet-async";
 
 const Register = () => {
 
-  const {createUser,updateProfileInfo} = useContext(AuthContext)
+  const {createUser,updateProfileInfo,signInWithGoogle} = useContext(AuthContext)
   const navigate = useNavigate();
 
   const handleRegistration = (e) =>{
@@ -61,7 +61,7 @@ const Register = () => {
             title: "yAy..",
             text: 'User Registered Successully. welcome!',
           })
-        navigate("/");
+        navigate("/login");
       })
       .catch((error) => {
         Swal.fire({
@@ -72,6 +72,25 @@ const Register = () => {
     });
   };
 
+  const handleGoogleLogin = () => {
+      signInWithGoogle()
+      .then((result) => {
+        
+        Swal.fire({
+          icon: "Success",
+          title: "yAy..",
+          text: 'User Logged In Successully with Gmail Account!',
+        })
+        navigate("/");
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `Sign In Failed : ${error.message}`,
+        })
+      });
+    };
 
   
   return (
@@ -91,6 +110,7 @@ const Register = () => {
           </div>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl ">
+        <h1 className="text-center text-2xl mt-4 font-bold">Login Now</h1>
           <form onSubmit={handleRegistration} className="card-body">
             <div className="form-control">
               <label className="label font-semibold">
@@ -147,7 +167,7 @@ const Register = () => {
             </div>
             <div className="form-control mt-6 space-y-4">
               <button className="btn bg-blue-400 font-bold hover:bg-blue-700 hover:text-white">Register</button>
-              <button className="btn flex bg-blue-400 font-bold hover:bg-blue-700 hover:text-white">
+              <button onClick={handleGoogleLogin} className="btn flex bg-blue-400 font-bold hover:bg-blue-700 hover:text-white">
                 <FaGoogle />
                 Register with Google</button>
               <p>

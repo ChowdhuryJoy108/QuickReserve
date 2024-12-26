@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import AuthContext from "../context/AuthContext";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const RoomReviewForm = ({ roomId, userName, closeReviewForm }) => {
   const { user, userId } = useContext(AuthContext);
@@ -23,11 +24,21 @@ const RoomReviewForm = ({ roomId, userName, closeReviewForm }) => {
     };
 
     try {
-      await axios.post("https://quick-reserve-server.vercel.app/reviews", review);
-      console.log("Review submitted successfully!");
+      await axios.post(
+        "https://quick-reserve-server.vercel.app/reviews",
+        review
+      );
+      Swal.fire({
+        icon: "success",
+        title: "Success..",
+        text: `Review submitted successfully!`,
+      });
     } catch (error) {
-      console.error("Error submitting review:", error);
-      console.log("Failed to submit review.");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Error submitting review: ${error}`,
+      });
     }
   };
 

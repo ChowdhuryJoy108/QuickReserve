@@ -4,18 +4,22 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import AuthContext from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-const RoomBookingForm = ({ roomDetails, setRoomDetails }) => {
+import Swal from "sweetalert2";
+const RoomBookingForm = ({ roomDetails }) => {
   const { userId, user } = useContext(AuthContext);
-  const navigate = useNavigate()
-  console.log(roomDetails);
+  const navigate = useNavigate();
+
+ 
+ 
   const [formData, setFormData] = useState({
     userId: userId,
-    userName: user.displayName,
+    userName: user?.displayName || user?.email,
     roomId: roomDetails._id,
-    bookingDate: new Date(), // Initialize with the current date
+    roomName: roomDetails.name, 
+    bookingDate: new Date(), 
   });
 
-  // Handle input changes for text fields
+  
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -23,7 +27,7 @@ const RoomBookingForm = ({ roomDetails, setRoomDetails }) => {
     });
   };
 
-  // Handle date picker change
+
   const handleDateChange = (date) => {
     setFormData({
       ...formData,
@@ -34,20 +38,30 @@ const RoomBookingForm = ({ roomDetails, setRoomDetails }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Convert date to ISO format before sending
+     
       const response = await axios.post(
         "https://quick-reserve-server.vercel.app/bookRoom",
         {
           ...formData,
           bookingDate: formData.bookingDate.toISOString().split("T")[0],
+        },
+        {
+          withCredentials:true
         }
       );
-      
-      alert("Room booked successfully: " + response.data.message);
-      navigate('/bookings')
+      Swal.fire({
+        icon: "success",
+        title: "Success..",
+        text: "Room booked successfully.",
+      });
+      // alert("Room booked successfully: " + response.data.message);
+      navigate("/bookings");
     } catch (error) {
-      console.error(error.response?.data?.error || "Error booking room");
-      alert(error.response?.data?.error || "Error booking room");
+      Swal.fire({
+        icon: "error",
+        title: "Error..",
+        text: "Error booking room",
+      });
     }
   };
   return (
@@ -69,6 +83,7 @@ const RoomBookingForm = ({ roomDetails, setRoomDetails }) => {
             onChange={handleChange}
             className="input input-bordered w-full"
             required
+            readOnly
           />
         </div>
 
@@ -83,6 +98,7 @@ const RoomBookingForm = ({ roomDetails, setRoomDetails }) => {
             onChange={handleChange}
             className="input input-bordered w-full"
             required
+            readOnly
           />
         </div>
 
@@ -97,6 +113,21 @@ const RoomBookingForm = ({ roomDetails, setRoomDetails }) => {
             onChange={handleChange}
             className="input input-bordered w-full"
             required
+            readOnly
+          />
+        </div>
+        <div className="form-control mb-4">
+          <label className="label">
+            <span className="label-text">Room Name</span>
+          </label>
+          <input
+            type="text"
+            name="roomName"
+            value={formData.roomName}
+            onChange={handleChange}
+            className="input input-bordered w-full"
+            required
+            readOnly
           />
         </div>
 

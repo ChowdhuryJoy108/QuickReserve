@@ -1,75 +1,105 @@
-import React, { useEffect, useState } from 'react';
-import AuthContext from './AuthContext';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth"
-import auth from '../firebase/firebase.init'
+import React, { useEffect, useState } from "react";
+import AuthContext from "./AuthContext";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signOut,
+  updateProfile,
+  signInWithPopup,
+} from "firebase/auth";
+import auth from "../firebase/firebase.init";
+import axios from "axios";
 
-const AuthProvider = ({children}) => {
+const provider = new GoogleAuthProvider();
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [userId, setUserId] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    const [user, setUser ] = useState(null)
-    const [userId, setUserId] = useState(null)
-    const [loading, setLoading] = useState(true)
+  const createUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
+  const signInUser = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
+  const updateProfileInfo = (updateInfo) => {
+    setLoading(true);
+    return updateProfile(auth.currentUser, updateInfo);
+  };
 
-    const createUser = (email, password) =>{
-        setLoading(true)
-        return createUserWithEmailAndPassword(auth, email, password);
-    }
+  const signOutUser = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
-    const signInUser = (email, password) =>{
-        setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password)
-    }
+  const signInWithGoogle = () => {
+    setLoading(true);
+    return signInWithPopup(auth, provider);
+  };
 
-    const updateProfileInfo = (updateInfo) =>{
-        setLoading(true);
-        return updateProfile(auth.currentUser, updateInfo);
-    }
-
-
-    const signOutUser = ()=>{
-        setLoading(true);
-        return signOut(auth)
-
-    }
-
-    
-
-    useEffect(()=>{
-        const unSubscribe = onAuthStateChanged(auth, currentUser =>{
-            setLoading(true)
-            if(currentUser){
-                console.log(currentUser.uid);
-                setUserId(currentUser.uid)
-                setUser(currentUser)
-            }else{
-                setUser(null)
-            }
-            setLoading(false)
-          });
-          return ()=>unSubscribe()
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setLoading(true);
+      if (currentUser) {
         
-      }, [])
+        setUserId(currentUser.uid);
+        setUser(currentUser);
 
+        if (currentUser?.email) {
+          const user = { email: currentUser.email };
 
+          axios
+            .post(
+              "https://quick-reserve-server.vercel.app/jwt",
+              user,
+              { withCredentials: true }
+            )
+            .then((res) => {
+              console.log("login token", res.data);
+              setLoading(false);
+            });
+        } else {
+          axios
+            .post(
+              "https://quick-reserve-server.vercel.app/logout",
+              {},
+              {
+                withCredentials: true,
+              }
+            )
+            .then((res) => {
+              console.log("logout", res.data);
+              setLoading(false);
+            });
+        }
+      } else {
+        setUser(null);
+      }
+      setLoading(false);
+    });
+    return () => unSubscribe();
+  }, []);
 
-      const authInfo = {
-        user,
-        loading,
-        userId,
-        createUser,
-        signInUser,
-        updateProfileInfo,
-        signOutUser
-    }
+  const authInfo = {
+    user,
+    loading,
+    userId,
+    createUser,
+    signInUser,
+    updateProfileInfo,
+    signOutUser,
+    signInWithGoogle,
+  };
 
-
-
-    return (
-        <AuthContext.Provider value={authInfo}>
-            {children}
-        </AuthContext.Provider >
-    );
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;
