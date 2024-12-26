@@ -6,7 +6,7 @@ import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { Helmet } from "react-helmet";
+import {  Helmet } from "react-helmet-async";
 
 const Login = () => {
     const navigate = useNavigate()

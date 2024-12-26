@@ -5,7 +5,7 @@ import backgroundImage from "../../assets/check.webp";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ReviewTestimonials from "../../components/ReviewTestimonials";
-import { Helmet } from "react-helmet";
+import {  Helmet } from "react-helmet-async";
 
 const Home = () => {
   const [allReviews, setAllReviews] = useState([]);

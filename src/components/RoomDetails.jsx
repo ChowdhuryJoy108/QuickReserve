@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import RoomBookingForm from "./RoomBookingForm";
 import ReviewTestimonials from "./ReviewTestimonials";
-import { Helmet } from "react-helmet";
+import {  Helmet } from "react-helmet-async";
 
 const RoomDetails = () => {
   const { id } = useParams();
@@ -50,12 +50,15 @@ const RoomDetails = () => {
           />
         </Helmet>
       <div className="mt-8">
-        <h3 className="flex items-center text-xl text-center font-bold mb-8">
-          Explore More About <span>{name}</span>.
-          <div className={`badge ${availability ? "badge-success" : "badge-secondary" }`}>
+        <h3 className="flex flex-col  items-center text-xl text-center font-bold mb-8 lg:flex-row gap-2 lg:text-4xl ">
+          Explore More About - <span className="text-5xl">{name}</span>
+          <div className={`badge my-4 ${availability ? "badge-success" : "badge-secondary" } lg:mx-10`}>
             {availability ? "Available" : "Booked"}
           </div>
         </h3>
+        <div className="mb-8">
+          <h1 className="text-base text-gray-600 lg:text-xl">Room Description - {description}</h1>
+        </div>
         <Carousel className="rounded-xl mb-[100px] ">
           <img
             src="https://i.ibb.co.com/wMb5Wjf/DALL-E-2024-12-08-12-51-34-A-professional-and-visually-appealing-carousel-image-designed-for-a-visa.webp"
@@ -64,14 +67,12 @@ const RoomDetails = () => {
         </Carousel>
       </div>
       <div>
-        <h3>Room's Description </h3>
-        <p>{description}</p>
-        <h3>
-          Room Price Per Day :{currency} {price}/Day{" "}
+        <h3 className="text-base font-bold mb-4 lg:text-2xl:">
+          Room Price : <span className="text-2xl font-bold lg:text-4xl ">{currency} {price}/Day{" "}</span>
         </h3>
-        <div>
-          <h1>Facilties: </h1>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:grid-cols-4">
+        <div className="mb-4">
+          <h1 className="font-bold text-base lg:text-2xl">Facilties: Facilites You will get with your booking for this room.</h1>
+          <div className="grid grid-cols-2 my-8 md:grid-cols-3 gap-4 lg:grid-cols-4">
             {facilities?.map((facility, index) => (
               <button className="btn btn-outline" key={index}>
                 {facility}

@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { FaFilter } from "react-icons/fa";
 import RoomCard from "../../components/RoomCard";
 import AuthContext from "../../context/AuthContext";
-import { Helmet } from "react-helmet";
+import {  Helmet } from "react-helmet-async";
 import { Typewriter } from 'react-simple-typewriter'
 
 const Rooms = () => {
