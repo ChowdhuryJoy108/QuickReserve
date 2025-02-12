@@ -30,7 +30,7 @@ const RoomGallery = () => {
         >
           <Lottie animationData={GalleryAnimation} />
         </motion.div>
-        <h2 className="text-xl font-bold text-center text-gray-800 mb-4 lg:text-4xl">
+        <h2 className="text-lg font-bold text-center text-gray-800 mb-4 lg:text-4xl">
           ✨ Discover a world of luxury and comfort <br /> at Radisson Blu
           Chittagong.
         </h2>

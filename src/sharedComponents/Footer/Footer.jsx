@@ -12,28 +12,24 @@ const Footer = () => {
           <br />
           Providing reliable service since 2008
         </p>
-        <p className="text-gray-600">all rights reserved!@Developed By Joy Chowdhury</p>
+        <p className="text-gray-600">All rights reserved!@Developed By Joy Chowdhury</p>
       </aside>
-      <nav>
-        <h6 className="footer-title">Services</h6>
-        <a className="link link-hover">Branding</a>
-        <a className="link link-hover">Real Estate</a>
-        <a className="link link-hover">Promotional</a>
-        <a className="link link-hover">Advertisement</a>
-      </nav>
+      
       <nav>
         <h6 className="footer-title">OuickReserve</h6>
         <Link to="/"><a className="link link-hover">Home</a></Link>
         <Link to="/rooms"><a className="link link-hover">Rooms</a></Link>
-        <a className="link link-hover">Career</a>
-        <a className="link link-hover">Press kit</a>
+        <Link to="/gallery"><a className="link link-hover">Gallery</a></Link>
+        <Link to="/aboutus"><a className="link link-hover">About Us</a></Link>   
       </nav>
       <nav>
-        <h6 className="footer-title">Legal</h6>
-        <a className="link link-hover">Terms of use</a>
-        <a className="link link-hover">Privacy policy</a>
-        <a className="link link-hover">Cookie policy</a>
+        <h6 className="footer-title">Developer Links</h6>
+        <Link to="https://github.com/ChowdhuryJoy108"><a className="link link-hover">Github</a></Link>
+        <Link to="https://www.facebook.com/share/1BkA741HaF/"><a className="link link-hover">Facebook</a></Link>
+        <Link to="https://www.linkedin.com/in/joy-chowdhury798/"><a className="link link-hover">LinkedIn</a></Link>
       </nav>
+      
+      
     </footer>
   );
 };
