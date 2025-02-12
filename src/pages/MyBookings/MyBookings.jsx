@@ -246,7 +246,7 @@ const MyBookings = () => {
                   </td>
                   <td className="border border-gray-300 px-4 py-2">
                     <button
-                      className="btn btn-primary btn-sm mr-2"
+                      className="btn  bg-green-400 hover:bg-green-700 hover:text-white btn-sm mr-2"
                       onClick={() => {
                         setSelectedBooking(booking);
                         setShowModal(true);
@@ -255,7 +255,7 @@ const MyBookings = () => {
                       Update Date
                     </button>
                     <button
-                      className="btn btn-error btn-sm mr-2"
+                      className="btn btn-error btn-sm mr-2  hover:text-white"
                       onClick={() =>
                         handleCancelBooking(booking._id, booking.roomId)
                       }
@@ -263,7 +263,7 @@ const MyBookings = () => {
                       Cancel
                     </button>
                     <button
-                      className="btn btn-success btn-sm"
+                      className="btn btn-success btn-sm  hover:text-white"
                       onClick={() =>
                         handleReview(booking.roomId, booking.userName)
                       }
@@ -309,11 +309,11 @@ const MyBookings = () => {
             />
 
             <div className="modal-action">
-              <button className="btn btn-primary" onClick={handleUpdateDate}>
+              <button className="btn  bg-green-400 hover:bg-green-700 hover:text-white" onClick={handleUpdateDate}>
                 Save
               </button>
               <button
-                className="btn btn-secondary"
+                className="btn btn-error"
                 onClick={() => setShowModal(false)}
               >
                 Cancel

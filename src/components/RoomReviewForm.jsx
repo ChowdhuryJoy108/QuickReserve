@@ -88,10 +88,16 @@ const RoomReviewForm = ({ roomId, userName, closeReviewForm }) => {
         </div>
 
         <div className="modal-action">
-          <button onClick={closeReviewForm} className="btn btn-error">
+          <button
+            onClick={closeReviewForm}
+            className="btn btn-error  hover:text-white"
+          >
             Cancel
           </button>
-          <button onClick={handleSubmitReview} className="btn btn-success">
+          <button
+            onClick={handleSubmitReview}
+            className="btn btn-success  hover:text-white"
+          >
             Submit Review
           </button>
         </div>

@@ -7,25 +7,25 @@ import ReviewTestimonialCard from "./ReviewTestimonialCard";
 const ReviewTestimonials = ({roomReviews}) => {
     
      const isSingleReview = roomReviews.length === 1;
-      // Slider settings
+     
       const settings = {
-        dots: true, // Enable navigation dots
-        infinite: !isSingleReview, // Infinite scrolling
-        speed: 500, // Transition speed
-        slidesToShow: 2, // Number of slides to show at a time
-        slidesToScroll: isSingleReview ? 1 : 2, // Number of slides to scroll
-        autoplay: true, // Enable autoplay
-        // autoplaySpeed: 3000, // Autoplay speed in ms
-        arrows: true, // Enable navigation arrows
+        dots: true, 
+        infinite: !isSingleReview, 
+        speed: 500, 
+        slidesToShow: 2,
+        slidesToScroll: isSingleReview ? 1 : 2, 
+        autoplay: true, 
+    
+        arrows: true,
         responsive: [
             {
-              breakpoint: 1024, // For large screens
+              breakpoint: 1024, 
               settings: {
                 slidesToShow: isSingleReview ? 1 : 2,
               },
             },
             {
-              breakpoint: 480, // For small screens
+              breakpoint: 480,
               settings: {
                 slidesToShow: 1,
               },
