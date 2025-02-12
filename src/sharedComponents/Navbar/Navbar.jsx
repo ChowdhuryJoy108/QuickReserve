@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import Swal from "sweetalert2";
-import Logo from '../../assets/logo.png'
+import Logo from "../../assets/logo.png";
 
 const Navbar = () => {
-  const { user,signOutUser } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const { user, signOutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const links = (
     <div className="flex flex-col font-semibold gap-4 lg:flex-row">
       <li>
@@ -22,33 +22,37 @@ const Navbar = () => {
         <NavLink to={"/aboutus"}>About Us</NavLink>
       </li>
 
-      {
-        user && (<li>
-          <NavLink to={"/bookings"}>My Bookings</NavLink>
-        </li>)
-      }
+      {user && (
+        <>
+          <li>
+            <NavLink to={"/bookings"}>My Bookings</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/profile"}>My Profile</NavLink>
+          </li>
+        </>
+      )}
     </div>
   );
 
-
-  const handleSignOut =()=>{
+  const handleSignOut = () => {
     signOutUser()
       .then(() => {
         Swal.fire({
-                    icon: "success",
-                    title: "Success..",
-                    text: 'User Logged out Successully. welcome!',
-                  })
-        navigate('/')
+          icon: "success",
+          title: "Success..",
+          text: "User Logged out Successully. welcome!",
+        });
+        navigate("/");
       })
       .catch((error) => {
         Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: `Log Out Failed : ${error.message}`,
-              })
+          icon: "error",
+          title: "Oops...",
+          text: `Log Out Failed : ${error.message}`,
+        });
       });
-  }
+  };
   return (
     <div className="navbar  ticky top-0 z-50 bg-[#F9F7F3] px-4">
       <div className="navbar-start">
@@ -85,7 +89,9 @@ const Navbar = () => {
       </div>
       <div className="navbar-end text-xs md:text-sm space-x-1 lg:text-base lg:space-x-4">
         {user && user.email ? (
-          <Link onClick={handleSignOut} className="btn">Log Out</Link>
+          <Link onClick={handleSignOut} className="btn">
+            Log Out
+          </Link>
         ) : (
           <>
             <Link to={"/login"} className="btn">

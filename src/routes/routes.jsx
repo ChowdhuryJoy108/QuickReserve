@@ -10,6 +10,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import RoomGallery from "../components/RoomGallery";
 import AboutUs from "../components/AboutUs";
+import Profile from "../pages/Profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,12 @@ const router = createBrowserRouter([
         path:"bookings",
         element:<PrivateRoutes>
           <MyBookings />
+        </PrivateRoutes>
+      },
+      {
+        path:"profile",
+        element:<PrivateRoutes>
+          <Profile />
         </PrivateRoutes>
       },
       {

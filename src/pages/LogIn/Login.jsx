@@ -51,8 +51,8 @@ const Login = () => {
       
 
       Swal.fire({
-        icon: "Success",
-        title: "yAy..",
+        icon: "success",
+        title: "Success",
         text: 'User Logged In Successully with Gmail Account!',
       })
       navigate("/");
@@ -121,7 +121,7 @@ const Login = () => {
                 Login with Google</button>
               <p>
                 New to this website ?
-                Click here to <Link className=" font-bold text-blue-400 hover:text-blue-700" to={'/login'}>Register</Link> now!
+                Click here to <Link className=" font-bold text-green-400 hover:text-green-700" to={'/login'}>Register</Link> now!
               </p>
             </div>
           </form>
