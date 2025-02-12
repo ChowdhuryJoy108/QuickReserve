@@ -5,7 +5,7 @@ import BookDateAnimation from '../assets/lottie/lottieHotels/bookdate.json'
 
 const FeaturedRooms = ({ featuredRooms }) => {
   const location = useLocation();
-  console.log(location.pathname);
+
   return (
     <div className="my-8">
       <div className="flex flex-col items-center gap-4 my-8">

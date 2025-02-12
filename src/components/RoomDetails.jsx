@@ -5,23 +5,24 @@ import axios from "axios";
 import RoomBookingForm from "./RoomBookingForm";
 import ReviewTestimonials from "./ReviewTestimonials";
 import { Helmet } from "react-helmet-async";
-import Lottie from 'lottie-react'
-import BookAnimation from '../assets/lottie/lottieHotels/booking.json'
+import Lottie from "lottie-react";
+import BookAnimation from "../assets/lottie/lottieHotels/booking.json";
 import AuthContext from "../context/AuthContext";
+import ReviewAnimation from "../assets/lottie/lottieHotels/review.json"
 
 const RoomDetails = () => {
   const { id } = useParams();
-  const {user} = useContext(AuthContext)
-  const navigate = useNavigate()
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [roomDetails, setRoomDetails] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [roomReviews, setRoomReviews] = useState([]);
 
   const openModal = () => {
-    if(!user){
-      navigate('/login')
+    if (!user) {
+      navigate("/login");
     }
-    setIsModalOpen(true)
+    setIsModalOpen(true);
   };
 
   useEffect(() => {
@@ -70,30 +71,27 @@ const RoomDetails = () => {
           </div>
         </h3>
         <div className="mb-8">
-          <h1 className="text-base text-gray-600 lg:text-xl">
-            Room Description - {description}
-          </h1>
+          <h1 className="text-base text-gray-700 lg:text-xl">{description}</h1>
         </div>
         <Carousel className="rounded-xl mb-[100px] ">
-          {
-            photos?.map((photo,index) => <img key={index}
-            src={photo}
-            className="h-[500px] w-full object-fit"
-          />)
-          }
-          
+          {photos?.map((photo, index) => (
+            <img
+              key={index}
+              src={photo}
+              className="h-[500px] w-full object-fit"
+            />
+          ))}
         </Carousel>
       </div>
       <div>
         <h3 className="text-base font-bold mb-4 lg:text-2xl:">
-          Room Price :{" "}
           <span className="text-2xl font-bold lg:text-4xl ">
             {currency} {price}/Day{" "}
           </span>
         </h3>
         <div className="mb-4">
           <h1 className="font-bold text-base lg:text-2xl">
-            Facilties: Facilites You will get with your booking for this room.
+            Facilites You will get with your booking for this room.
           </h1>
           <div className="grid grid-cols-2 my-8 md:grid-cols-3 gap-4 lg:grid-cols-4">
             {facilities?.map((facility, index) => (
@@ -105,8 +103,13 @@ const RoomDetails = () => {
         </div>
 
         <div className="my-8">
+          <div className="flex flex-col items-center">
+            <div className=" w-48 lg:w-96 ml-8">
+              <Lottie animationData={ReviewAnimation} />
+            </div>
+          </div>
           <h2 className="text-2xl font-bold text-center text-gray-800 mb-8 lg:text-4xl ">
-            Guest Reviews ({roomReviews.length})
+            Guest Reviews
           </h2>
           <div>
             {roomReviews.length > 0 ? (
@@ -126,7 +129,7 @@ const RoomDetails = () => {
             <button
               disabled={!availability}
               onClick={openModal}
-              className="btn w-full"
+              className="btn w-full  bg-green-400 hover:bg-green-700 hover:text-white"
             >
               Book Now
             </button>

@@ -143,7 +143,7 @@ const Home = () => {
           </div>
         </div>
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-8 lg:text-4xl ">
-          Guest Reviews ({allReviews.length})
+          Guest Reviews
         </h2>
         <ReviewTestimonials roomReviews={allReviews} />
       </div>

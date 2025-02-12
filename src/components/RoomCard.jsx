@@ -29,13 +29,13 @@ const RoomCard = ({ room }) => {
             </span>
             /Day
           </p>
-          <div className="card-actions justify-start">
+          {/* <div className="card-actions justify-start">
             {facilities.map((facility, index) => (
               <div key={index} className="badge badge-outline">
                 <span className="font-semibold">{facility}</span>
               </div>
             ))}
-          </div>
+          </div> */}
           {
             location.pathname === '/rooms' ? " " : <div className="w-full">
             <Link to={`/room/details/${_id}`}>
