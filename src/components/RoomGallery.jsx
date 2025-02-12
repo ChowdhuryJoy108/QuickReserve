@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import GalleryAnimation from "../assets/lottie/lottieHotels/gallery.json";
 import Lottie from "lottie-react";
+import { Link } from "react-router-dom";
 
 const RoomGallery = () => {
   const [roomGallery, setRoomGallery] = useState([]);
@@ -14,15 +15,14 @@ const RoomGallery = () => {
   }, []);
 
   return (
-    <motion.div 
+    <motion.div
       className="my-16"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-
       <div className="flex flex-col items-center my-8">
-        <motion.div 
+        <motion.div
           className="w-48 lg:w-64 ml-8"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -42,8 +42,7 @@ const RoomGallery = () => {
         </p>
       </div>
 
-
-      <motion.div 
+      <motion.div
         className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -58,11 +57,13 @@ const RoomGallery = () => {
             transition={{ duration: 0.6, delay: index * 0.1 }} // Staggered animation
             whileHover={{ scale: 1.05 }}
           >
-            <img
-              className="w-full h-full object-cover rounded-lg"
-              src={room.photos}
-              alt="gallery-photo"
-            />
+            <Link to={`/room/details/${room._id}`}>
+              <img
+                className="w-full h-full object-cover rounded-lg"
+                src={room.photos}
+                alt="gallery-photo"
+              />
+            </Link>
           </motion.div>
         ))}
       </motion.div>
