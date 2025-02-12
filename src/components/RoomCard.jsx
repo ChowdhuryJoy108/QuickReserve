@@ -7,7 +7,7 @@ const RoomCard = ({ room }) => {
     console.log(location.pathname)
   return (
     <Link to={`/room/details/${_id}`}>
-      <div className="card  bg-base-100 w-full h-[450px] shadow-xl lg:w-96">
+      <div className={`card  bg-base-100 w-full ${location.pathname === "/" ? "h-[400px]" : "h-[300px]"} shadow-xl lg:w-96`}>
         <figure>
           <img
             src={photos[0]}
@@ -29,13 +29,6 @@ const RoomCard = ({ room }) => {
             </span>
             /Day
           </p>
-          {/* <div className="card-actions justify-start">
-            {facilities.map((facility, index) => (
-              <div key={index} className="badge badge-outline">
-                <span className="font-semibold">{facility}</span>
-              </div>
-            ))}
-          </div> */}
           {
             location.pathname === '/rooms' ? " " : <div className="w-full">
             <Link to={`/room/details/${_id}`}>
