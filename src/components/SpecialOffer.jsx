@@ -22,7 +22,7 @@ const SpecialOffer = ({setShowOfferModal}) => {
             />
             <p className="text-gray-700 text-center">
               🎉 Enjoy up to <strong>50% OFF</strong> on selected Rooms, Breakfast, Dinner and more!
-              Offer valid until <strong>January 10th, 2025</strong>. Don’t miss
+              Offer valid until <strong>Febuary 27th, 2025</strong>. Don’t miss
               out!
             </p>
             <div className="mt-6 flex justify-center">
