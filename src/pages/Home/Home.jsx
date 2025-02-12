@@ -77,7 +77,7 @@ const Home = () => {
             </p>
             <div>
               <Link to={"/rooms"}>
-                <button className="btn">View Rooms</button>
+                <button className="btn  bg-green-100 hover:bg-green-400 hover:text-white">View Rooms</button>
               </Link>
             </div>
           </div>
@@ -101,7 +101,7 @@ const Home = () => {
             </p>
             <div>
               <Link to={"/rooms"}>
-                <button className="btn">View Rooms</button>
+                <button className="btn  bg-green-100 hover:bg-green-400 hover:text-white">View Rooms</button>
               </Link>
             </div>
           </div>
@@ -127,7 +127,7 @@ const Home = () => {
             </p>
             <div>
               <Link to={"/rooms"}>
-                <button className="btn">View Rooms</button>
+                <button className="btn  bg-green-100 hover:bg-green-400 hover:text-white">View Rooms</button>
               </Link>
             </div>
           </div>

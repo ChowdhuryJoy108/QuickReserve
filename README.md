@@ -1,4 +1,4 @@
-# Project Name : QuickReserve [Assignment Category: 03]
+# Project Name : QuickReserve 
 
 ## Here is the short description about this Project
 
