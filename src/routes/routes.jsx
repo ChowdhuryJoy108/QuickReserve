@@ -8,6 +8,7 @@ import Login from "../pages/LogIn/Login";
 import RoomDetails from "../components/RoomDetails";
 import PrivateRoutes from "./PrivateRoutes";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import RoomGallery from "../components/RoomGallery";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path:"rooms",
         element:<Rooms />
+      },
+      {
+        path:"gallery",
+        element:<RoomGallery />
       },
       {
         path:"room/details/:id",
