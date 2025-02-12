@@ -14,6 +14,7 @@ import HotelAnimation from "../../assets/lottie/lottieHotels/hotel.json";
 import ReviewAnimation from "../../assets/lottie/lottieHotels/review.json";
 import SpecialOffer from "../../components/SpecialOffer";
 import RoomGallery from "../../components/RoomGallery";
+import Newsletter from "../../components/NewsLetter";
 
 const Home = () => {
   const [allReviews, setAllReviews] = useState([]);
@@ -150,6 +151,8 @@ const Home = () => {
         </h2>
         <ReviewTestimonials roomReviews={allReviews} />
       </div>
+
+      <Newsletter />
     </div>
   );
 };
