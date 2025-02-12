@@ -166,13 +166,13 @@ const Register = () => {
               </label>
             </div>
             <div className="form-control mt-6 space-y-4">
-              <button className="btn bg-blue-400 font-bold hover:bg-blue-700 hover:text-white">Register</button>
-              <button onClick={handleGoogleLogin} className="btn flex bg-blue-400 font-bold hover:bg-blue-700 hover:text-white">
+              <button className="btn font-bold  bg-green-400 hover:bg-green-700 hover:text-white">Register</button>
+              <button onClick={handleGoogleLogin} className="btn flex font-bold  bg-green-400 hover:bg-green-700 hover:text-white">
                 <FaGoogle />
                 Register with Google</button>
               <p>
                 Already have an account ?
-                Click here to <Link className=" font-bold text-blue-400 hover:text-blue-700" to={'/login'}>Login</Link> now!
+                Click here to <Link className=" font-bold text-green-400 hover:text-green-700" to={'/login'}>Login</Link> now!
               </p>
             </div>
           </form>

@@ -28,7 +28,7 @@ const SpecialOffer = ({setShowOfferModal}) => {
             <div className="mt-6 flex justify-center">
               <button
                 onClick={() => setShowOfferModal(false)}
-                className="btn btn-primary"
+                className="btn  bg-green-400 hover:bg-green-700 hover:text-white"
               >
                 Visit Now
               </button>

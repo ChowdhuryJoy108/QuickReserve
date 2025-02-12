@@ -115,8 +115,8 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6 space-y-4">
-              <button className="btn bg-blue-400 font-bold hover:bg-blue-700 hover:text-white">Login</button>
-              <button onClick={handleGoogleLogin} className="btn flex bg-blue-400 font-bold hover:bg-blue-700 hover:text-white">
+              <button className="btn font-bold bg-green-400 hover:bg-green-700 hover:text-white">Login</button>
+              <button onClick={handleGoogleLogin} className="btn flex font-bold  bg-green-400 hover:bg-green-700 hover:text-white">
                 <FaGoogle />
                 Login with Google</button>
               <p>

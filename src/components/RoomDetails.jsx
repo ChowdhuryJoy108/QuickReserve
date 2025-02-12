@@ -37,8 +37,7 @@ const RoomDetails = () => {
       .then((res) => setRoomReviews(res.data));
   }, [id]);
 
-  console.log(roomDetails);
-  console.log(roomReviews);
+
   const {
     name,
     photos,
@@ -115,7 +114,7 @@ const RoomDetails = () => {
             {roomReviews.length > 0 ? (
               <ReviewTestimonials roomReviews={roomReviews} />
             ) : (
-              <div>
+              <div className="font-semibold text-gray-600">
                 Opps There is no Reviews for this room. It's going to be
                 surprise for you.Book now to enjoy our service and review your
                 valuable opinion us. you can review from your booking page.

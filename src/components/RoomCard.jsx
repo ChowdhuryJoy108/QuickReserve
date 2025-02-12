@@ -1,10 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 
 const RoomCard = ({ room }) => {
-  const { _id, photos, name, price, facilities, description, currency, availability } =
+  const { _id, photos, name, price, description, currency, availability } =
     room;
     const location = useLocation()
-    console.log(location.pathname)
+
   return (
     <Link to={`/room/details/${_id}`}>
       <div className={`card  bg-base-100 w-full ${location.pathname === "/" ? "h-[400px]" : "h-[300px]"} shadow-xl lg:w-96`}>

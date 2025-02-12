@@ -285,7 +285,7 @@ const MyBookings = () => {
       </div>
 
       <div className="flex justify-start mb-8">
-        <Link className="btn btn-primary" to="/">
+        <Link className="btn  bg-green-400 hover:bg-green-700 hover:text-white" to="/">
           Explore more <FaArrowCircleRight className="text-xl" />{" "}
         </Link>
       </div>
