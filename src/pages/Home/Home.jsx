@@ -12,7 +12,7 @@ import FeaturedRooms from "../../components/FeaturedRooms";
 import Lottie from "lottie-react";
 import HotelAnimation from "../../assets/lottie/lottieHotels/hotel.json";
 import ReviewAnimation from "../../assets/lottie/lottieHotels/review.json";
-import SpecialOffer from '../../components/SpecialOffer'
+import SpecialOffer from "../../components/SpecialOffer";
 
 const Home = () => {
   const [allReviews, setAllReviews] = useState([]);
@@ -23,7 +23,6 @@ const Home = () => {
   useEffect(() => {
     setShowOfferModal(true);
   }, []);
-
 
   useEffect(() => {
     axios
@@ -36,8 +35,6 @@ const Home = () => {
       .get("https://quick-reserve-server.vercel.app/rooms")
       .then((res) => setFeaturedRooms(res.data.slice(0, 7)));
   }, []);
-
-  // console.log(featuredRooms)
 
   return (
     <div className="my-8">
@@ -55,14 +52,10 @@ const Home = () => {
         </div>
       </div>
 
-      {
-        showOfferModal && (
-          <SpecialOffer setShowOfferModal={setShowOfferModal} />
-        )
-      }
+      {showOfferModal && <SpecialOffer setShowOfferModal={setShowOfferModal} />}
       <Carousel className="rounded-xl mb-[50px]">
         <div
-          className="relative flex flex-col items-center space-y-4 my-[50px] h-[380px] bg-cover bg-center text-white py-16 px-4  lg:h-[500px] "
+          className="relative flex flex-col items-center space-y-4 my-[50px] h-[380px] bg-cover bg-center text-white py-16 px-4 lg:h-[500px] "
           style={{
             backgroundImage: `url(${backgroundImageOne})`,
             backgroundPosition: "center",
@@ -72,10 +65,10 @@ const Home = () => {
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
           <div className="relative z-10 text-center  lg:top-32">
-            <h1 className="text-xl text-center font-bold lg:text-4xl">
+            <h1 className="text-lg text-center font-bold lg:text-4xl">
               Dear Guest Welcome to Radisson Blu Hotel, Chittagong.
             </h1>
-            <p className="w-full text-center mb-4 ml-0 text-gray-200 lg:w-[700px] lg:ml-32">
+            <p className="w-full text-xs text-center mb-4 ml-0 text-gray-200 lg:w-[700px] lg:ml-32 lg:text-lg">
               Explore all of our Rooms in one place! Find detailed information
               of rooms, facilities, and booking steps to make your online
               booking journey seamless and hassle-free.
@@ -98,13 +91,11 @@ const Home = () => {
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
           <div className="relative z-10 text-center  lg:top-32">
-            <h1 className="text-xl text-center font-bold lg:text-4xl">
-              Dear Guest Welcome to Radisson Blu Hotel, Chittagong.
+            <h1 className="text-lg text-center font-bold lg:text-4xl">
+            🍽️Savor the finest flavors from around the world at our exquisite restaurants.
             </h1>
-            <p className="w-full text-center mb-4 ml-0 text-gray-200 lg:w-[700px] lg:ml-32">
-              Explore all of our Rooms in one place! Find detailed information
-              of rooms, facilities, and booking steps to make your online
-              booking journey seamless and hassle-free.
+            <p className="w-full text-xs text-center mb-4 ml-0 text-gray-200 lg:w-[700px] lg:text-lg lg:ml-[250px]">
+            From authentic Bangladeshi delicacies to international gourmet dishes, our chefs craft each meal to perfection. Enjoy a fine dining experience in a luxurious ambiance.
             </p>
             <div>
               <Link to={"/rooms"}>
@@ -125,12 +116,12 @@ const Home = () => {
 
           <div className="relative z-10 text-center  lg:top-32">
             <h1 className="text-xl text-center font-bold lg:text-4xl">
-              Dear Guest Welcome to Radisson Blu Hotel, Chittagong.
+              💎Experience world-class hospitality in the heart of Chittagong.
             </h1>
-            <p className="w-full text-center mb-4 ml-0 text-gray-200 lg:w-[700px] lg:ml-32">
-              Explore all of our Rooms in one place! Find detailed information
-              of rooms, facilities, and booking steps to make your online
-              booking journey seamless and hassle-free.
+            <p className="w-full text-xs text-center mb-4 ml-0 text-gray-200 lg:w-[700px] lg:ml-[250px] lg:text-lg">
+              Our elegantly designed rooms offer breathtaking city and ocean
+              views, premium bedding, and modern amenities to ensure a relaxing
+              stay.
             </p>
             <div>
               <Link to={"/rooms"}>
@@ -139,7 +130,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-        
       </Carousel>
 
       <HotelMap />

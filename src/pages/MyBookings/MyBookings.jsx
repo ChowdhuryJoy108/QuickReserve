@@ -297,12 +297,7 @@ const MyBookings = () => {
             <DatePicker
               selected={newDate}
               onChange={(date) => {
-                // const localDate = new Date(
-                // //   date.getFullYear(),
-                // //   date.getMonth(),
-                // //   date.getDate()
-                // // );
-                // // setNewDate(localDate);
+             
                 const adjustedDate = new Date(date);
                 adjustedDate.setDate(adjustedDate.getDate() + 1);
                 setNewDate(adjustedDate);
