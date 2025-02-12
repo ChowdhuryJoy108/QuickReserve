@@ -13,6 +13,7 @@ import Lottie from "lottie-react";
 import HotelAnimation from "../../assets/lottie/lottieHotels/hotel.json";
 import ReviewAnimation from "../../assets/lottie/lottieHotels/review.json";
 import SpecialOffer from "../../components/SpecialOffer";
+import RoomGallery from "../../components/RoomGallery";
 
 const Home = () => {
   const [allReviews, setAllReviews] = useState([]);
@@ -135,6 +136,8 @@ const Home = () => {
       <HotelMap />
 
       <FeaturedRooms featuredRooms={featuredRooms} />
+      
+      <RoomGallery />
 
       <div>
         <div className="flex flex-col items-center">
